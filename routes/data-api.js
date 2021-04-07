@@ -17,17 +17,20 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
     
     try{
-        const { products, prices, links, stock, fecha } = req.body;
+        const data = req.body;
 
-        const product = await new Product({
-            product: products,
-            price: prices,
-            link: links,
-            stock: stock,
-            fecha: fecha
-        });
+        for(let x = 0; x<data.products.length; x++){
 
-        await product.save();
+            const product = await new Product({
+                product: data.products[x],
+                price: data.prices[x],
+                link: data.links[x],
+                stock: data.stock[x],
+                fecha: data.fecha[x]
+            });
+    
+            await product.save();
+        }
         
         res.status(201).json({status: 201, description: 'Data post success'});
     }catch(err){
