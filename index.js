@@ -11,8 +11,8 @@ app.set('json spaces', 2)
 
 // Middlewares
 app.use(morgan('dev'))
-app.use(express.json({ limit: "30mb", extended: true}));
-app.use(express.urlencoded({ limit: "30mb", extended: true}));
+app.use(express.json({ limit: "50mb", extended: true}));
+app.use(express.urlencoded({ limit: "50mb", extended: true, parameterLimit: 1000000}));
 app.use(cors());
 
 // Routes
