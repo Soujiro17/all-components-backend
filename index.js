@@ -1,0 +1,26 @@
+const express = require('express');
+const cors = require('cors');
+const morgan = require('morgan')
+require('./database')
+
+const app = express();
+
+// Settings
+app.set('port', process.env.PORT || 5000);
+app.set('json spaces', 2)
+
+// Middlewares
+app.use(morgan('dev'))
+app.use(express.json({ limit: "30mb", extended: true}));
+app.use(express.urlencoded({ limit: "30mb", extended: true}));
+app.use(cors());
+
+// Routes
+app.use('/api/data', require('./routes/data-api.js'));
+app.use('/api/pages', require('./routes/pages.js'));
+
+// Server
+
+app.listen(app.get('port'), () =>{
+    console.log(`Server running on port ${app.get('port')}`)
+})
