@@ -4,7 +4,8 @@ const MONGO_DB_URL = 'mongodb+srv://soujiro17:Lircay724@cluster0.kagba.mongodb.n
 
 mongoose.connect(MONGO_DB_URL, {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useFindAndModify: true
 })
     .then(() => console.log("Database is connected!"))
     .catch(err => console.log(err))

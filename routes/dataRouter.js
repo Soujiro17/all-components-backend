@@ -41,7 +41,7 @@ router.put('/:id', async (req, res) => {
 
     try{
 
-        const product = await Product.findByIdAndUpdate(id, data);
+        const product = await Product.findOneAndUpdate(id, data);
         await product.save();
         res.status(201).json({status: 201, description: 'Product updated success'});
 

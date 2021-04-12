@@ -71,6 +71,8 @@ router.get('/loggedIn', async (req, res) => {
         const token = req.cookies.token;
         if(!token) return res.json(false);
 
+        console.log("aqui")
+
         jwt.verify(token, process.env.JWT_SECRET);
 
         res.send(true);
