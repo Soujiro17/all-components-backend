@@ -15,7 +15,7 @@ app.use(morgan('dev'));
 app.use(express.json({ limit: "50mb", extended: true}));
 app.use(express.urlencoded({ limit: "50mb", extended: true, parameterLimit: 1000000}));
 app.use(cookieParser());
-app.use(cors());
+app.use(cors({credentials:  true }));
 
 // Routes
 app.use('/api/data', require('./routes/dataRouter.js'));
