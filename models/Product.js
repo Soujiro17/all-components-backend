@@ -25,6 +25,10 @@ const ProductScheme = new Schema({
     fecha: {
         type: String,
         required: true
+    },
+
+    img_link:{
+        type: String
     }
 
 })
