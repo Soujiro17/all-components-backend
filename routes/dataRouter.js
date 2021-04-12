@@ -2,6 +2,20 @@ const express = require('express');
 const router = express.Router();
 const Product = require('../models/Product.js')
 
+router.get('/find', async (req, res) => {
+
+    const search = req.query.search;
+
+    const results = await Product.find({ "product": { "$regex": search, $options: 'i'}})
+    
+    if(!results.length) return res.status(400).json({status: 400, message: "data not found"})
+    
+    res.status(200).json(results)
+
+
+
+})
+
 router.get('/', async (req, res) => {
 
     const products = await Product.find(); 
