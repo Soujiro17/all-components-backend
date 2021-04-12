@@ -72,9 +72,10 @@ router.get('/logout', async (req, res) => {
 router.get('/loggedIn', async (req, res) => {
     try{
         const token = req.cookies.token;
+        console.log(req.cookies)
+        console.log(token)
         if(!token) return res.json(false);
 
-        console.log("aqui")
 
         jwt.verify(token, process.env.JWT_SECRET);
 
